@@ -1,297 +1,220 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Akash Kumar Mishra | AI Chatbot Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"><style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akash Mishra | AI Developer Portfolio</title>
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --accent: #38bdf8;
+            --bot-bubble: rgba(51, 65, 85, 0.9);
+            --user-bubble: #38bdf8;
+            --text-main: #f8fafc;
+        }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
-body{
-background:linear-gradient(135deg,#020617,#0f172a,#020617);
-background-size:400% 400%;
-animation:bgMove 12s ease infinite;
-color:white;
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:20px
-}
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
 
-@keyframes bgMove{
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
-}
+        /* Animated Background Elements */
+        .emoji-bg {
+            position: absolute;
+            font-size: clamp(1.5rem, 5vw, 3rem);
+            z-index: -1;
+            filter: blur(1px);
+            animation: float 8s infinite ease-in-out;
+            opacity: 0.3;
+        }
 
-.container{
-width:100%;
-max-width:900px;
-height:85vh;
-background:rgba(11,17,32,.95);
-backdrop-filter:blur(10px);
-border-radius:22px;
-box-shadow:0 25px 70px rgba(0,0,0,.8);
-display:flex;
-flex-direction:column;
-overflow:hidden;
-animation:fadeIn 1s ease
-}
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-30px) scale(1.1); }
+        }
 
-@keyframes fadeIn{
-from{opacity:0;transform:translateY(20px)}
-to{opacity:1;transform:translateY(0)}
-}
+        /* Main Container: Mobile First */
+        #chat-container {
+            width: 95%;
+            height: 90vh;
+            max-width: 1000px;
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 24px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
 
-.header{
-padding:18px 20px;
-border-bottom:1px solid rgba(255,255,255,0.08)
-}
+        /* Header */
+        header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
 
-.header h1{font-size:18px}
-.header p{font-size:12px;opacity:.7;margin-top:4px}
+        header h1 { font-size: 1.2rem; color: var(--accent); letter-spacing: 1px; }
 
-.quick{
-display:flex;
-flex-wrap:wrap;
-gap:8px;
-padding:12px 15px;
-border-bottom:1px solid rgba(255,255,255,0.05)
-}
+        /* Chat Window */
+        #chat-window {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) transparent;
+        }
 
-.quick button{
-background:#1e293b;
-border:none;
-color:white;
-padding:7px 12px;
-font-size:12px;
-border-radius:10px;
-cursor:pointer;
-transition:.25s
-}
+        /* Bubbles */
+        .msg {
+            max-width: 85%;
+            padding: 14px 20px;
+            border-radius: 18px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            animation: slideIn 0.3s ease-out;
+            position: relative;
+        }
 
-.quick button:hover{
-background:#2563eb;
-transform:translateY(-2px) scale(1.05)
-}
+        .bot { background: var(--bot-bubble); align-self: flex-start; border-bottom-left-radius: 4px; }
+        .user { background: var(--user-bubble); color: #0f172a; align-self: flex-end; border-bottom-right-radius: 4px; font-weight: 600; }
 
-.chat{
-flex:1;
-padding:20px;
-overflow-y:auto;
-display:flex;
-flex-direction:column;
-gap:14px
-}
+        @keyframes slideIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-.message{
-padding:12px 16px;
-border-radius:14px;
-max-width:75%;
-font-size:14px;
-line-height:1.5;
-animation:msgFade .3s ease
-}
+        /* Tech Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
 
-@keyframes msgFade{
-from{opacity:0;transform:translateY(6px)}
-to{opacity:1;transform:translateY(0)}
-}
+        .skill-card {
+            background: rgba(15, 23, 42, 0.6);
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid var(--accent);
+            text-align: center;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
 
-.bot{
-background:#1e293b;
-align-self:flex-start
-}
+        /* Controls / Interaction */
+        .controls {
+            padding: 20px;
+            background: rgba(15, 23, 42, 0.4);
+            border-bottom-left-radius: 24px;
+            border-bottom-right-radius: 24px;
+        }
 
-.user{
-background:#2563eb;
-align-self:flex-end
-}
+        .chip-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
 
-.input-area{
-padding:14px;
-display:flex;
-gap:8px;
-border-top:1px solid rgba(255,255,255,0.08)
-}
+        .chip {
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 10px 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
 
-input{
-flex:1;
-padding:12px;
-border:none;
-border-radius:12px;
-background:#020617;
-color:white
-}
+        .chip:hover { background: var(--accent); color: #0f172a; transform: translateY(-2px); }
 
-button.send{
-padding:12px 16px;
-border:none;
-border-radius:12px;
-background:#2563eb;
-color:white;
-cursor:pointer;
-transition:.25s
-}
+        /* Mobile specific adjustments */
+        @media (max-width: 600px) {
+            #chat-container { height: 95vh; width: 100%; border-radius: 0; }
+            .msg { max-width: 90%; font-size: 0.9rem; }
+            .chip { padding: 8px 14px; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
 
-button.send:hover{
-background:#1d4ed8;
-transform:scale(1.05)
-}
+    <div class="emoji-bg" style="top:10%; left:5%;">🤖</div>
+    <div class="emoji-bg" style="top:50%; right:5%; animation-delay: 2s;">🚀</div>
+    <div class="emoji-bg" style="bottom:10%; left:10%; animation-delay: 4s;">✨</div>
 
-.voice{
-background:#16a34a;
-border:none;
-padding:12px 14px;
-border-radius:12px;
-color:white;
-cursor:pointer;
-transition:.25s
-}
+    <div id="chat-container">
+        <header>
+            <h1>AKASH_AI_DEVELOPER.exe</h1>
+        </header>
 
-.voice:hover{
-background:#15803d;
-transform:scale(1.05)
-}
+        <div id="chat-window">
+            <div class="msg bot">
+                Hello! [span_0](start_span)[span_1](start_span)I am <b>Akash Kumar Mishra</b>, a Consultant at Genpact[span_0](end_span)[span_1](end_span). 
+                [span_2](start_span)[span_3](start_span)I specialize in Generative AI, RAG pipelines, and high-performance Chatbots[span_2](end_span)[span_3](end_span). 
+                What would you like to know about my work?
+            </div>
+        </div>
 
-.typing{
-font-size:12px;
-opacity:.7
-}
+        <div class="controls">
+            <div class="chip-stack">
+                <div class="chip" onclick="ask('Experience')">💼 Experience</div>
+                <div class="chip" onclick="ask('Skills')">🛠️ Tech Stack</div>
+                <div class="chip" onclick="ask('Achievements')">🏆 Awards</div>
+                <div class="chip" onclick="ask('Contact')">📞 Get in Touch</div>
+            </div>
+        </div>
+    </div>
 
-/* Mobile */
-@media (max-width:600px){
-.header h1{font-size:16px}
+    <script>
+        const windowDiv = document.getElementById('chat-window');
 
-.quick button{
-font-size:11px
-}
+        function addMessage(content, sender) {
+            const div = document.createElement('div');
+            div.className = `msg ${sender}`;
+            div.innerHTML = content;
+            windowDiv.appendChild(div);
+            windowDiv.scrollTop = windowDiv.scrollHeight;
+        }
 
-.message{font-size:13px}
-}
-
-</style></head><body><div class="container"><div class="header">
-<h1>🤖 Akash Kumar Mishra — AI Portfolio Assistant</h1>
-<p>Generative AI • Chatbot Developer • Conversational AI</p>
-</div><div class="quick">
-<button onclick="ask('experience')">💼 Experience</button>
-<button onclick="ask('skills')">🧠 Skills</button>
-<button onclick="ask('projects')">🚀 Projects</button>
-<button onclick="ask('achievements')">🏆 Achievements</button>
-<button onclick="ask('certifications')">📜 Certifications</button>
-<button onclick="ask('contact')">📞 Contact</button>
-</div><div class="chat" id="chat">
-<div class="message bot">👋 Hi! I'm Akash's AI assistant. Ask me about his <b>GenAI experience</b>, chatbot projects, skills or achievements.</div>
-</div><div class="input-area">
-<input id="input" placeholder="Ask something about Akash... 💬" />
-<button class="voice" onclick="startVoice()">🎤</button>
-<button class="send" onclick="sendMessage()">Send 🚀</button>
-</div></div><script>
-
-const chat=document.getElementById('chat')
-
-function addMessage(text,type){
-
-const msg=document.createElement('div')
-msg.classList.add('message',type)
-msg.innerHTML=text
-chat.appendChild(msg)
-chat.scrollTop=chat.scrollHeight
-
-}
-
-function typing(){
-
-const t=document.createElement('div')
-t.classList.add('typing')
-t.id='typing'
-t.innerText='🤖 AI is typing...'
-
-chat.appendChild(t)
-chat.scrollTop=chat.scrollHeight
-
-}
-
-function removeTyping(){
-const t=document.getElementById('typing')
-if(t)t.remove()
-}
-
-function botReply(q){
-
-q=q.toLowerCase()
-
-if(q.includes('experience')){
-return "💼 Akash has <b>3+ years of experience</b> building conversational AI systems. He worked at <b>Tata Consultancy Services</b> and <b>Genpact</b> developing enterprise chatbots using Microsoft Copilot Studio, GPT models and automation workflows." 
-}
-
-if(q.includes('skills')){
-return "🧠 Akash's core skills include: <br><br>• Microsoft Copilot Studio <br>• Generative AI <br>• Retrieval Augmented Generation (RAG) <br>• Python <br>• Power Automate <br>• Bot Framework Composer <br>• Git & Postman"
-}
-
-if(q.includes('project')){
-return "🚀 Key AI Projects built by Akash: <br><br>1️⃣ Enterprise RAG chatbot retrieving answers from company documents. <br><br>2️⃣ SQL AI Agent converting database output into natural language responses. <br><br>3️⃣ Enterprise assistants for Finance, IT and Sourcing teams."
-}
-
-if(q.includes('achievement')){
-return "🏆 Akash received the <b>On-The-Spot Team Award</b> at TCS for integrating Copilot Studio with Node.js using Direct Line API and delivering the solution within tight timelines."
-}
-
-if(q.includes('certification')){
-return "📜 Akash holds the <b>Databricks Accredited Generative AI Fundamentals</b> certification validating his knowledge in modern GenAI systems."
-}
-
-if(q.includes('contact')){
-return "📞 Contact Akash here:<br><br>📧 Email: akashmishra2797@gmail.com <br>📱 Phone: +91-9993379161 <br>📍 Location: Indore, India"
-}
-
-return "✨ You can ask about <b>experience</b>, <b>skills</b>, <b>projects</b>, <b>achievements</b>, <b>certifications</b>, or <b>contact</b>."
-
-}
-
-function ask(q){
-addMessage(q,'user')
-reply(q)
-}
-
-function reply(text){
-
-typing()
-
-setTimeout(()=>{
-removeTyping()
-addMessage(botReply(text),'bot')
-},900)
-
-}
-
-function sendMessage(){
-
-const input=document.getElementById('input')
-const text=input.value.trim()
-
-if(!text)return
-
-addMessage(text,'user')
-input.value=''
-reply(text)
-
-}
-
-function startVoice(){
-
-const recognition=new(window.SpeechRecognition||window.webkitSpeechRecognition)()
-recognition.lang='en-US'
-recognition.start()
-
-recognition.onresult=function(e){
-const text=e.results[0][0].transcript
-addMessage(text,'user')
-reply(text)
-}
-
-}
-
-</script></body>
+        function ask(topic) {
+            addMessage(`Tell me about your ${topic}.`, 'user');
+            
+            setTimeout(() => {
+                let response = "";
+                if(topic === 'Experience') {
+                    [span_4](start_span)response = `<b>Genpact (Present):</b> Developing Gen AI capabilities for Copilot bots using GPT-based APIs and RAG[span_4](end_span).<br><br>
+                                [span_5](start_span)<b>SkillRecruit:</b> Built SQL Agent pipelines and integrated GPT-4o with Kore.ai[span_5](end_span).<br><br>
+                                [span_6](start_span)[span_7](start_span)<b>TCS:</b> Automated workflows using Power Automate and Microsoft Copilot Studio[span_6](end_span)[span_7](end_span).`;
+                } else if(topic === 'Skills') {
+                    response = `I build scalable AI solutions with:
+                                <div class="card-grid">
+                                    [span_8](start_span)<div class="skill-card">GPT-4o / LLMs[span_8](end_span)</div>
+                                    [span_9](start_span)[span_10](start_span)<div class="skill-card">RAG Pipelines[span_9](end_span)[span_10](end_span)</div>
+                                    [span_11](start_span)[span_12](start_span)<div class="skill-card">Copilot Studio[span_11](end_span)[span_12](end_span)</div>
+                                    [span_13](start_span)<div class="skill-card">Python[span_13](end_span)</div>
+                                    [span_14](start_span)[span_15](start_span)<div class="skill-card">Power Automate[span_14](end_span)[span_15](end_span)</div>
+                                    [span_16](start_span)<div class="skill-card">Kore.ai[span_16](end_span)</div>
+                                </div>`;
+                } else if(topic === 'Achievements') {
+                    [span_17](start_span)response = `🏆 <b>On the Spot Team Award:</b> Recognized at TCS for Direct Line API & Node.js integration[span_17](end_span).<br><br>
+                                [span_18](start_span)📜 <b>Certification:</b> Databricks Accredited Generative AI Fundamentals[span_18](end_span).`;
+                } else {
+                    response = `Let's connect! [span_19](start_span)<br>📧 akashmishra2797@gmail.com[span_19](end_span)[span_20](start_span)<br>📞 +91-9993379161[span_20](end_span)[span_21](start_span)[span_22](start_span)<br>📍 Indore/Gurugram[span_21](end_span)[span_22](end_span)`;
+                }
+                addMessage(response, 'bot');
+            }, 700);
+        }
+    </script>
+</body>
 </html>
