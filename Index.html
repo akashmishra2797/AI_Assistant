@@ -1,0 +1,308 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akash Kumar Mishra | AI Chatbot Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"><style>
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+
+body{
+background:linear-gradient(135deg,#020617,#0f172a);
+color:white;
+height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+overflow:hidden
+}
+
+.wrapper{
+display:flex;
+gap:30px;
+align-items:center
+}
+
+.container{
+width:420px;
+height:700px;
+background:#0b1120;
+border-radius:22px;
+box-shadow:0 30px 80px rgba(0,0,0,.8);
+display:flex;
+flex-direction:column;
+overflow:hidden
+}
+
+.header{
+padding:18px;
+border-bottom:1px solid rgba(255,255,255,0.08)
+}
+
+.header h1{font-size:18px}
+.header p{font-size:12px;opacity:.6;margin-top:4px}
+
+.quick{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+padding:10px;
+border-bottom:1px solid rgba(255,255,255,0.05)
+}
+
+.quick button{
+background:#1e293b;
+border:none;
+color:white;
+padding:6px 10px;
+font-size:12px;
+border-radius:8px;
+cursor:pointer;
+transition:.2s
+}
+
+.quick button:hover{background:#2563eb}
+
+.chat{
+flex:1;
+padding:18px;
+overflow-y:auto;
+display:flex;
+flex-direction:column;
+gap:12px
+}
+
+.message{
+padding:12px 14px;
+border-radius:14px;
+max-width:78%;
+font-size:14px;
+line-height:1.45;
+animation:fade .25s ease
+}
+
+.bot{background:#1e293b;align-self:flex-start}
+.user{background:#2563eb;align-self:flex-end}
+
+.input-area{
+padding:14px;
+display:flex;
+gap:8px;
+border-top:1px solid rgba(255,255,255,0.08)
+}
+
+input{
+flex:1;
+padding:11px;
+border:none;
+border-radius:10px;
+background:#020617;
+color:white
+}
+
+button.send{
+padding:11px 16px;
+border:none;
+border-radius:10px;
+background:#2563eb;
+color:white;
+cursor:pointer
+}
+
+button.send:hover{background:#1d4ed8}
+
+.voice{
+background:#16a34a;
+border:none;
+padding:11px 12px;
+border-radius:10px;
+color:white;
+cursor:pointer
+}
+
+.voice:hover{background:#15803d}
+
+.typing{font-size:12px;opacity:.6}
+
+.sidepanel{
+width:320px;
+background:#0b1120;
+padding:22px;
+border-radius:20px;
+box-shadow:0 20px 60px rgba(0,0,0,.6);
+height:700px;
+overflow:auto
+}
+
+.section{margin-bottom:26px}
+
+.section h2{
+font-size:16px;
+margin-bottom:10px;
+border-bottom:1px solid rgba(255,255,255,.08);
+padding-bottom:6px
+}
+
+.project{
+background:#1e293b;
+padding:12px;
+border-radius:10px;
+margin-bottom:10px;
+font-size:13px
+}
+
+.links a{
+display:inline-block;
+margin-right:10px;
+margin-top:6px;
+color:#60a5fa;
+text-decoration:none;
+font-size:13px
+}
+
+.links a:hover{text-decoration:underline}
+
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+</style></head><body><div class="wrapper"><div class="container"><div class="header">
+<h1>Akash Kumar Mishra — AI Assistant</h1>
+<p>Generative AI • Conversational AI • Chatbot Developer</p>
+</div><div class="quick">
+<button onclick="ask('experience')">Experience</button>
+<button onclick="ask('skills')">Skills</button>
+<button onclick="ask('projects')">Projects</button>
+<button onclick="ask('achievements')">Achievements</button>
+<button onclick="ask('certifications')">Certifications</button>
+<button onclick="ask('contact')">Contact</button>
+</div><div class="chat" id="chat"><div class="message bot">Hi 👋 I'm Akash's AI assistant. Ask me anything about his experience, Generative AI skills, chatbot projects or achievements.</div></div><div class="input-area">
+<input id="input" placeholder="Ask something about Akash..." />
+<button class="voice" onclick="startVoice()">🎤</button>
+<button class="send" onclick="sendMessage()">Send</button>
+</div></div><div class="sidepanel"><div class="section">
+<h2>About</h2>
+<p style="font-size:13px;opacity:.8">
+Generative AI and Chatbot Developer with 3+ years of experience building enterprise AI assistants using Microsoft Copilot Studio, GPT models and Retrieval Augmented Generation architectures.
+</p>
+</div><div class="section">
+<h2>Key AI Projects</h2><div class="project">
+<b>Enterprise RAG Chatbot</b><br>
+Built a GPT‑4o powered chatbot that retrieves answers from enterprise documents and knowledge bases.
+</div><div class="project">
+<b>SQL AI Agent</b><br>
+Automated pipeline downloading Excel files from SharePoint, storing in Azure DB and generating human‑readable responses using GPT.
+</div><div class="project">
+<b>Enterprise FAQ Assistants</b><br>
+Built domain specific assistants for Finance, IT and Sourcing teams using Generative AI.
+</div></div><div class="section">
+<h2>Tech Stack</h2>
+<p style="font-size:13px">
+Microsoft Copilot Studio<br>
+Bot Framework Composer<br>
+Generative AI<br>
+RAG Architecture<br>
+Python<br>
+Power Automate<br>
+Git & Postman
+</p>
+</div><div class="section">
+<h2>Profiles</h2>
+<div class="links">
+<a href="#">LinkedIn</a>
+<a href="#">GitHub</a>
+<a href="mailto:akashmishra2797@gmail.com">Email</a>
+</div>
+</div></div></div><script>
+
+const chat=document.getElementById('chat')
+
+function addMessage(text,type){
+const msg=document.createElement('div')
+msg.classList.add('message',type)
+msg.innerText=text
+chat.appendChild(msg)
+chat.scrollTop=chat.scrollHeight
+}
+
+function typing(){
+const t=document.createElement('div')
+t.classList.add('typing')
+t.id='typing'
+t.innerText='AI is typing...'
+chat.appendChild(t)
+chat.scrollTop=chat.scrollHeight
+}
+
+function removeTyping(){
+const t=document.getElementById('typing')
+if(t)t.remove()
+}
+
+function botReply(q){
+q=q.toLowerCase()
+
+if(q.includes('experience')){
+return 'Akash has 3+ years of experience building conversational AI solutions. He worked at Tata Consultancy Services and Genpact creating enterprise chatbots using Microsoft Copilot Studio, GPT models and automation workflows.'
+}
+
+if(q.includes('skills')){
+return 'Akash specializes in Microsoft Copilot Studio, Generative AI, RAG pipelines, GPT APIs, Python, Power Automate, chatbot architecture and enterprise AI assistants.'
+}
+
+if(q.includes('project')){
+return 'Akash built several AI systems including enterprise RAG chatbots, SQL AI agents and domain specific assistants for finance, IT and sourcing teams.'
+}
+
+if(q.includes('achievement')){
+return 'Akash received an On-The-Spot Team Award at TCS for integrating Copilot Studio with Node.js using Direct Line API and delivering the solution under tight timelines.'
+}
+
+if(q.includes('certification')){
+return 'Akash holds the Databricks Accredited Generative AI Fundamentals certification validating his knowledge of modern GenAI architectures.'
+}
+
+if(q.includes('contact')){
+return 'You can reach Akash at: akashmishra2797@gmail.com | Phone: +91-9993379161 | Location: Indore, India.'
+}
+
+return 'You can ask about Akash experience, AI projects, skills, achievements or certifications.'
+}
+
+function ask(q){addMessage(q,'user');reply(q)}
+
+function reply(text){
+
+typing()
+
+setTimeout(()=>{
+removeTyping()
+addMessage(botReply(text),'bot')
+},800)
+
+}
+
+function sendMessage(){
+const input=document.getElementById('input')
+const text=input.value.trim()
+if(!text)return
+addMessage(text,'user')
+input.value=''
+reply(text)
+}
+
+function startVoice(){
+
+const recognition=new(window.SpeechRecognition||window.webkitSpeechRecognition)()
+recognition.lang='en-US'
+recognition.start()
+
+recognition.onresult=function(e){
+const text=e.results[0][0].transcript
+addMessage(text,'user')
+reply(text)
+}
+
+}
+
+</script></body>
+</html>
