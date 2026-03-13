@@ -10,23 +10,26 @@
 body{
 background:linear-gradient(135deg,#020617,#0f172a);
 color:white;
-height:100vh;
+min-height:100vh;
 display:flex;
-flex-direction:column;
 align-items:center;
 justify-content:center;
-overflow:hidden
+padding:20px
 }
 
 .wrapper{
 display:flex;
+flex-direction:row;
 gap:30px;
-align-items:center
+width:100%;
+max-width:1200px
 }
 
 .container{
-width:420px;
-height:700px;
+flex:1;
+min-width:320px;
+max-width:500px;
+height:720px;
 background:#0b1120;
 border-radius:22px;
 box-shadow:0 30px 80px rgba(0,0,0,.8);
@@ -58,8 +61,7 @@ color:white;
 padding:6px 10px;
 font-size:12px;
 border-radius:8px;
-cursor:pointer;
-transition:.2s
+cursor:pointer
 }
 
 .quick button:hover{background:#2563eb}
@@ -78,8 +80,7 @@ padding:12px 14px;
 border-radius:14px;
 max-width:78%;
 font-size:14px;
-line-height:1.45;
-animation:fade .25s ease
+line-height:1.45
 }
 
 .bot{background:#1e293b;align-self:flex-start}
@@ -121,17 +122,14 @@ color:white;
 cursor:pointer
 }
 
-.voice:hover{background:#15803d}
-
-.typing{font-size:12px;opacity:.6}
-
 .sidepanel{
-width:320px;
+flex:1;
+min-width:280px;
 background:#0b1120;
 padding:22px;
 border-radius:20px;
 box-shadow:0 20px 60px rgba(0,0,0,.6);
-height:700px;
+height:720px;
 overflow:auto
 }
 
@@ -163,7 +161,51 @@ font-size:13px
 
 .links a:hover{text-decoration:underline}
 
-@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.typing{font-size:12px;opacity:.6}
+
+/* Tablet */
+@media (max-width:1000px){
+.wrapper{
+flex-direction:column;
+align-items:center
+}
+
+.container{
+width:100%;
+max-width:600px;
+height:650px
+}
+
+.sidepanel{
+width:100%;
+max-width:600px;
+height:auto
+}
+}
+
+/* Mobile */
+@media (max-width:600px){
+body{padding:10px}
+
+.container{
+height:600px
+}
+
+.header h1{font-size:16px}
+
+.quick button{
+font-size:11px;
+padding:5px 8px
+}
+
+.message{
+font-size:13px
+}
+
+.sidepanel{
+padding:16px
+}
+}
 
 </style></head><body><div class="wrapper"><div class="container"><div class="header">
 <h1>Akash Kumar Mishra — AI Assistant</h1>
@@ -175,7 +217,9 @@ font-size:13px
 <button onclick="ask('achievements')">Achievements</button>
 <button onclick="ask('certifications')">Certifications</button>
 <button onclick="ask('contact')">Contact</button>
-</div><div class="chat" id="chat"><div class="message bot">Hi 👋 I'm Akash's AI assistant. Ask me anything about his experience, Generative AI skills, chatbot projects or achievements.</div></div><div class="input-area">
+</div><div class="chat" id="chat">
+<div class="message bot">Hi 👋 I'm Akash's AI assistant. Ask me about his experience, AI projects, chatbot skills or achievements.</div>
+</div><div class="input-area">
 <input id="input" placeholder="Ask something about Akash..." />
 <button class="voice" onclick="startVoice()">🎤</button>
 <button class="send" onclick="sendMessage()">Send</button>
@@ -187,13 +231,13 @@ Generative AI and Chatbot Developer with 3+ years of experience building enterpr
 </div><div class="section">
 <h2>Key AI Projects</h2><div class="project">
 <b>Enterprise RAG Chatbot</b><br>
-Built a GPT‑4o powered chatbot that retrieves answers from enterprise documents and knowledge bases.
+GPT-4o powered chatbot retrieving answers from enterprise documents.
 </div><div class="project">
 <b>SQL AI Agent</b><br>
-Automated pipeline downloading Excel files from SharePoint, storing in Azure DB and generating human‑readable responses using GPT.
+Pipeline downloading Excel from SharePoint, storing in Azure DB and generating answers using GPT.
 </div><div class="project">
 <b>Enterprise FAQ Assistants</b><br>
-Built domain specific assistants for Finance, IT and Sourcing teams using Generative AI.
+AI assistants for Finance, IT and Sourcing teams.
 </div></div><div class="section">
 <h2>Tech Stack</h2>
 <p style="font-size:13px">
@@ -241,31 +285,19 @@ if(t)t.remove()
 function botReply(q){
 q=q.toLowerCase()
 
-if(q.includes('experience')){
-return 'Akash has 3+ years of experience building conversational AI solutions. He worked at Tata Consultancy Services and Genpact creating enterprise chatbots using Microsoft Copilot Studio, GPT models and automation workflows.'
-}
+if(q.includes('experience')) return 'Akash has 3+ years of experience building conversational AI solutions at TCS and Genpact using Copilot Studio, GPT models and automation.'
 
-if(q.includes('skills')){
-return 'Akash specializes in Microsoft Copilot Studio, Generative AI, RAG pipelines, GPT APIs, Python, Power Automate, chatbot architecture and enterprise AI assistants.'
-}
+if(q.includes('skills')) return 'Akash specializes in Microsoft Copilot Studio, Generative AI, RAG pipelines, GPT APIs, Python, Power Automate and enterprise chatbot architecture.'
 
-if(q.includes('project')){
-return 'Akash built several AI systems including enterprise RAG chatbots, SQL AI agents and domain specific assistants for finance, IT and sourcing teams.'
-}
+if(q.includes('project')) return 'Key projects include enterprise RAG chatbots, SQL AI agents and domain-specific assistants for enterprise teams.'
 
-if(q.includes('achievement')){
-return 'Akash received an On-The-Spot Team Award at TCS for integrating Copilot Studio with Node.js using Direct Line API and delivering the solution under tight timelines.'
-}
+if(q.includes('achievement')) return 'Akash received an On-The-Spot Team Award at TCS for Copilot Studio integration using Direct Line API.'
 
-if(q.includes('certification')){
-return 'Akash holds the Databricks Accredited Generative AI Fundamentals certification validating his knowledge of modern GenAI architectures.'
-}
+if(q.includes('certification')) return 'Akash holds the Databricks Accredited Generative AI Fundamentals certification.'
 
-if(q.includes('contact')){
-return 'You can reach Akash at: akashmishra2797@gmail.com | Phone: +91-9993379161 | Location: Indore, India.'
-}
+if(q.includes('contact')) return 'Contact: akashmishra2797@gmail.com | Phone: +91-9993379161 | Location: Indore, India.'
 
-return 'You can ask about Akash experience, AI projects, skills, achievements or certifications.'
+return 'You can ask about Akash experience, skills, AI projects or certifications.'
 }
 
 function ask(q){addMessage(q,'user');reply(q)}
@@ -291,17 +323,14 @@ reply(text)
 }
 
 function startVoice(){
-
 const recognition=new(window.SpeechRecognition||window.webkitSpeechRecognition)()
 recognition.lang='en-US'
 recognition.start()
-
 recognition.onresult=function(e){
 const text=e.results[0][0].transcript
 addMessage(text,'user')
 reply(text)
 }
-
 }
 
 </script></body>
